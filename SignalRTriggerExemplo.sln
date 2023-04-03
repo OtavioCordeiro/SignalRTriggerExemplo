@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTriggerExemplo", "SignalRTriggerExemplo\SignalRTriggerExemplo.csproj", "{D02634A8-8505-455B-85AF-48223F11792E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D02634A8-8505-455B-85AF-48223F11792E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02634A8-8505-455B-85AF-48223F11792E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02634A8-8505-455B-85AF-48223F11792E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02634A8-8505-455B-85AF-48223F11792E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CB3BDF2-CFF4-4AB0-8F24-77EF1BE75C32}
+	EndGlobalSection
+EndGlobal

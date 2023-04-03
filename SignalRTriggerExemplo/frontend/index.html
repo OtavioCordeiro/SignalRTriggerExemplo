@@ -1,0 +1,75 @@
+﻿﻿
+<html>
+
+<body>
+    <h1>Azure SignalR Serverless Sample</h1>
+    <div id="messages"></div>
+
+    <div class="form-group row">
+        <label for="message" class="col-2 col-form-label">Message</label>
+        <div class="col col-sm-6">
+            <input id="messageInput" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="messageGroup" class="col-2 col-form-label">Group Name</label>
+        <div class="col col-sm-6">
+            <input id="messageGroupInput" class="form-control" />
+        </div>
+    </div>
+
+    <button id="send" type="button" class="btn btn-primary">Send Message</button>
+    <button id="sendGroup" type="button" class="btn btn-primary">Send Message To Group</button>
+    <button id="addToGroup" type="button" class="btn btn-primary">Add to Group</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+    <script>
+        let messages = document.querySelector('#messages');
+        const apiBaseUrl = "";
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl(apiBaseUrl + '/api')
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        console.log("conectado com sucesso x");
+
+        connection.on('newMessage', (message) => {
+            console.log("recebi uma mensagem: " + message)
+            document.getElementById("messages").innerHTML += message;
+        });
+
+        document.getElementById("send").addEventListener("click", async () => {
+            const message = document.getElementById("messageInput").value;
+            try {
+                connection.send("SendMessage", message);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        document.getElementById("sendGroup").addEventListener("click", async () => {
+            const message = document.getElementById("messageInput").value;
+            const groupName = document.getElementById("messageGroupInput").value;
+            try {
+                connection.send("SendMessageToGroup", groupName, message);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        document.getElementById("addToGroup").addEventListener("click", async () => {
+            const groupName = document.getElementById("messageGroupInput").value;
+            try {
+                connection.send("AddToGroup", groupName);
+            } catch (err) {
+                console.error(err);
+            }
+        });
+
+        connection.start()
+            .catch(console.error);
+    </script>
+</body>
+
+</html>
